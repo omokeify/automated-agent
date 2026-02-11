@@ -86,9 +86,21 @@ const HalideLanding: React.FC = () => {
 
         .canvas-3d {
           position: relative;
-          width: 800px; height: 500px;
+          width: 280px; height: 180px;
           transform-style: preserve-3d;
           transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @media (min-width: 640px) {
+          .canvas-3d {
+            width: 500px; height: 320px;
+          }
+        }
+
+        @media (min-width: 1024px) {
+          .canvas-3d {
+            width: 800px; height: 500px;
+          }
         }
 
         .layer {
@@ -128,7 +140,7 @@ const HalideLanding: React.FC = () => {
         .interface-grid {
           position: fixed;
           inset: 0;
-          padding: 4rem;
+          padding: 1.5rem;
           display: grid;
           grid-template-columns: 1fr 1fr;
           grid-template-rows: auto 1fr auto;
@@ -136,26 +148,57 @@ const HalideLanding: React.FC = () => {
           pointer-events: none;
         }
 
+        @media (min-width: 640px) {
+          .interface-grid {
+            padding: 4rem;
+          }
+        }
+
         .hero-title {
           grid-column: 1 / -1;
           align-self: center;
-          font-size: clamp(2rem, 8vw, 8rem);
+          font-size: clamp(2.5rem, 12vw, 8rem);
           line-height: 0.85;
           letter-spacing: -0.04em;
           mix-blend-mode: difference;
           font-weight: 900;
           text-transform: uppercase;
+          margin: 1rem 0;
         }
 
         .cta-button {
           pointer-events: auto;
           background: var(--silver);
           color: var(--bg);
-          padding: 1rem 2rem;
+          padding: 0.75rem 1.5rem;
           text-decoration: none;
           font-weight: 700;
           clip-path: polygon(0 0, 100% 0, 100% 70%, 85% 100%, 0 100%);
           transition: 0.3s;
+          font-size: 0.875rem;
+        }
+
+        @media (min-width: 640px) {
+          .cta-button {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+          }
+        }
+
+        .system-info {
+          grid-column: 1 / -1;
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+          justify-content: space-between;
+          align-items: flex-start;
+        }
+
+        @media (min-width: 640px) {
+          .system-info {
+            flex-direction: row;
+            align-items: flex-end;
+          }
         }
 
         .cta-button:hover { background: var(--accent); transform: translateY(-5px); }
@@ -187,15 +230,15 @@ const HalideLanding: React.FC = () => {
         <div className="halide-grain" style={{ filter: 'url(#grain)' }}></div>
 
         <div className="interface-grid">
-          <div style={{ fontWeight: 700 }}>AGENT_CORE v1.0</div>
-          <div style={{ textAlign: 'right', fontFamily: 'monospace', color: 'var(--accent)', fontSize: '0.7rem' }}>
+          <div style={{ fontWeight: 700, fontSize: 'clamp(0.6rem, 2vw, 1rem)' }}>AGENT_CORE v1.0</div>
+          <div style={{ textAlign: 'right', fontFamily: 'monospace', color: 'var(--accent)', fontSize: 'clamp(0.5rem, 1.5vw, 0.7rem)' }}>
             <div>STATUS: PROSPECTING...</div>
             <div>LEADS_FOUND: 142</div>
           </div>
 
           <h1 className="hero-title">AUTOMATED<br />REVENUE</h1>
 
-          <div style={{ gridColumn: '1 / -1', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+          <div className="system-info">
             <div style={{ fontFamily: 'monospace', fontSize: '0.75rem' }}>
               <p>[ SYSTEM ONLINE ]</p>
               <p>AI-DRIVEN BUSINESS GROWTH & AUTOMATION</p>
